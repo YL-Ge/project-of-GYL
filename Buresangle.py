@@ -77,7 +77,7 @@ def verify_density_matrix(matx, tol=1e-10):
 def Bures_distance(rho, sigma):
     """
     计算两个密度矩阵之间的Bures距离
-    B(ρ, σ) = arccos(sqrt(rho^(1/2)·σ·ρ^(1/2)))
+    B(ρ, σ) = arccos(tr(sqrt(rho^(1/2)·σ·ρ^(1/2))))
     
     参数:
     rho, sigma (numpy.ndarray): 两个密度矩阵
@@ -100,7 +100,7 @@ def Bures_distance(rho, sigma):
     current_matrix_eigenvalues = np.linalg.eigvalsh(current_matrix)
     current_matrix_eigenvalues = np.maximum(current_matrix_eigenvalues, 0)
     
-    # 计算tr(ρ^(1/2)·σ·ρ^(1/2))
+    # 计算tr(sqrt(ρ^(1/2)·σ·ρ^(1/2)))
     fidelity = np.sum(np.sqrt(current_matrix_eigenvalues))
     
     # 确保保真度数值有效
